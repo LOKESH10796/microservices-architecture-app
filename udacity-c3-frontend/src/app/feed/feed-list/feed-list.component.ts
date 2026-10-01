@@ -8,12 +8,12 @@ import { Subscription } from 'rxjs';
   selector: 'app-feed-list',
   templateUrl: './feed-list.component.html',
   styleUrls: ['./feed-list.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeedListComponent implements OnInit, OnDestroy {
-  @Input() feedItems: FeedItem[];
+  @Input() feedItems!: FeedItem[];
   subscriptions: Subscription[] = [];
-  constructor( private feed: FeedProviderService ) { }
+
+  constructor(private feed: FeedProviderService) { }
 
   async ngOnInit() {
     this.subscriptions.push(
@@ -29,6 +29,4 @@ export class FeedListComponent implements OnInit, OnDestroy {
       subscription.unsubscribe();
     }
   }
-
-
 }

@@ -20,7 +20,11 @@ export function requireAuth(req: Request, res: Response, next: NextFunction) {
      }
      
      const token = token_bearer[1];
-     return jwt.verify(token, c.config.jwt.secret , (err, decoded) => {
+         const jwtSecret = c.config.jwt.secret;
+         if (!jwtSecret) {
+           return res.status(500).send({ auth: false, message: 'JWT secret not configured.' });
+         }
+         return jwt.verify(token, jwtSecret, (err, decoded) => {
        if (err) {
          return res.status(500).send({ auth: false, message: 'Failed to authenticate.' });
        }
@@ -84,10 +88,10 @@ router.post('/',
         return res.status(400).send({ message: 'File url is required' });
     }
 
-    const item = await new FeedItem({
-            caption: caption,
-            url: fileName
-    });
+    const item = FeedItem.build({
+                caption: caption,
+                url: fileName
+            } as any);
 
     const saved_item = await item.save();
 

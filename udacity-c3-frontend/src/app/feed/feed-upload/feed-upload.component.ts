@@ -13,9 +13,9 @@ import { LoadingController, ModalController } from '@ionic/angular';
   styleUrls: ['./feed-upload.component.scss'],
 })
 export class FeedUploadComponent implements OnInit {
-  previewDataUrl;
-  file: File;
-  uploadForm: FormGroup;
+  previewDataUrl: string | null = null;
+  file: File | null = null;
+  uploadForm: FormGroup = new FormGroup({});
 
   constructor(
     private feed: FeedProviderService,
@@ -33,24 +33,25 @@ export class FeedUploadComponent implements OnInit {
   setPreviewDataUrl(file: Blob) {
     const reader  = new FileReader();
     reader.onloadend = () => {
-      this.previewDataUrl = reader.result;
+      this.previewDataUrl = reader.result as string;
     };
 
     reader.readAsDataURL(file);
   }
 
-  selectImage(event) {
-    const file = event.srcElement.files;
+  selectImage(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const files = input.files;
 
-    if (!file) {
+    if (!files || files.length === 0) {
       return;
     }
-    this.file = file[0];
+    this.file = files[0];
     this.setPreviewDataUrl(this.file);
 
   }
 
-  onSubmit($event) {
+  onSubmit($event: Event) {
     $event.preventDefault();
     this.loadingController.create();
 

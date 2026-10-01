@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 
-const components = [];
+const components: any[] = [];
 
 @NgModule({
   imports: [

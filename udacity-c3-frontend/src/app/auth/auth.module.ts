@@ -12,8 +12,12 @@ import { AuthMenuUserComponent } from './auth-menu-button/auth-menu-user/auth-me
 import { ApiModule } from '../api/api.module';
 import { ApiService } from '../api/api.service';
 
-const entryComponents = [AuthMenuUserComponent, AuthMenuButtonComponent, AuthLoginComponent, AuthRegisterComponent];
-const components = [...entryComponents];
+const components: any[] = [
+  AuthMenuUserComponent,
+  AuthMenuButtonComponent,
+  AuthLoginComponent,
+  AuthRegisterComponent
+];
 
 @NgModule({
   imports: [
@@ -23,7 +27,6 @@ const components = [...entryComponents];
     ReactiveFormsModule,
     ApiModule
   ],
-  entryComponents: entryComponents,
   declarations: components,
   exports: components,
   providers: []

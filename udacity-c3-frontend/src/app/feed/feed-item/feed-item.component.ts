@@ -8,7 +8,7 @@ import { FeedItem } from '../models/feed-item.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeedItemComponent implements OnInit {
-  @Input() feedItem: FeedItem;
+  @Input() feedItem!: FeedItem;
 
   constructor() { }
 

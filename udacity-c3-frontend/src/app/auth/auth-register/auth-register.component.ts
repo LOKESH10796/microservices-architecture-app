@@ -11,8 +11,8 @@ import { ModalController } from '@ionic/angular';
 })
 export class AuthRegisterComponent implements OnInit {
 
-  registerForm: FormGroup;
-  error: string;
+  registerForm: FormGroup = new FormGroup({});
+  error: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -35,7 +35,7 @@ export class AuthRegisterComponent implements OnInit {
     }, { validators: this.passwordsMatch });
   }
 
-  onSubmit($event) {
+  onSubmit($event: Event) {
     $event.preventDefault();
 
     if (!this.registerForm.valid) { return; }

@@ -19,7 +19,6 @@ import { ApiService } from './api/api.service';
     AppComponent,
     MenubarComponent
   ],
-  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

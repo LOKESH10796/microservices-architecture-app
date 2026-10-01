@@ -12,8 +12,8 @@ import { catchError } from 'rxjs/operators';
   styleUrls: ['./auth-login.component.scss'],
 })
 export class AuthLoginComponent implements OnInit {
-  loginForm: FormGroup;
-  error: string;
+  loginForm: FormGroup = new FormGroup({});
+  error: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +31,7 @@ export class AuthLoginComponent implements OnInit {
     });
   }
 
-  async onSubmit($event) {
+  async onSubmit($event: Event) {
     $event.preventDefault();
 
     if (!this.loginForm.valid) { return; }
