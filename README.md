@@ -16,20 +16,20 @@ The monolith has been broken down into independent microservices (`user-service`
 
 ```mermaid
 flowchart TD
-    User([🌐 End User / Client])
+    User(["🌐 End User / Client"])
     
     subgraph K8s Cluster
-        Ingress[[⚡ NGINX Reverse Proxy]]
+        Ingress[["⚡ NGINX Reverse Proxy"]]
         
         subgraph Microservices
-            Frontend[🖥️ Frontend (Ionic/Angular)]
-            UserAPI[🔐 User Service (Node.js)]
-            FeedAPI[📸 Feed Service (Node.js)]
+            Frontend["🖥️ Frontend (Ionic/Angular)"]
+            UserAPI["🔐 User Service (Node.js)"]
+            FeedAPI["📸 Feed Service (Node.js)"]
         end
         
         subgraph Stateful Storage
-            Postgres[(🐘 Amazon RDS PostgreSQL)]
-            S3[(🪣 AWS S3 Object Storage)]
+            Postgres[("🐘 Amazon RDS PostgreSQL")]
+            S3[("🪣 AWS S3 Object Storage")]
         end
     end
     
