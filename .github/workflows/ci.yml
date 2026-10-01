@@ -11,4 +11,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build Docker Images
-      run: docker compose -f udacity-c3-deployment/docker/docker compose-build.yaml build --parallel
+      run: docker compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
